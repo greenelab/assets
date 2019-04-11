@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <clipPath id="clip">
+    <path
+      d="
+        M 0 0
+        L 0 80
+        L 100 0
+        Z
+      "
+    ></path>
+    <path
+      d="
+        M 100 100
+        L 0 100
+        L 100 20
+        Z
+      "
+    ></path>
+  </clipPath>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    d="
+      M 22 25
+      L 78 25
+    "
+  ></path>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    d="
+      M 30 35
+      L 70 35
+    "
+  ></path>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    d="
+      M 30 65
+      L 70 65
+    "
+  ></path>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    d="
+      M 22 75
+      L 78 75
+    "
+  ></path>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    fill="none"
+    clip-path="url(#clip)"
+    d="
+      M 15 10
+      C 15 40 85 60 85 90
+    "
+  ></path>
+  <path
+    stroke="#424242"
+    stroke-width="5"
+    fill="none"
+    d="
+      M 85 10
+      C 85 40 15 60 15 90
+    "
+  ></path>
+  <circle cx="15" cy="10" r="8" fill="#424242"></circle>
+  <circle cx="85" cy="10" r="8" fill="#02b3e4"></circle>
+  <circle cx="15" cy="90" r="8" fill="#e91e63"></circle>
+  <circle cx="85" cy="90" r="8" fill="#424242"></circle>
+</svg>

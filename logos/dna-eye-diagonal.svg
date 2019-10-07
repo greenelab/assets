@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#5B9D78" />
+  <g transform="translate(50 50) rotate(-35) translate(-50 -50)">
+    <path
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="5"
+      d="
+        M 15 65
+        C 35 65 30 35 50.1 35
+      "
+    />
+    <path
+      fill="none"
+      stroke="#5B9D78"
+      stroke-width="12"
+      d="
+        M 15 35
+        C 35 35 30 65 50 65
+      "
+    />
+    <path
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="5"
+      d="
+        M 15 35
+        C 35 35 30 65 50.1 65
+      "
+    />
+    <path
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="5"
+      d="
+        M 49.9 65
+        C 70 65 65 35 85 35
+      "
+    />
+    <path
+      fill="none"
+      stroke="#5B9D78"
+      stroke-width="12"
+      d="
+        M 50 35
+        C 70 35 65 65 85 65
+      "
+    />
+    <path
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="5"
+      d="
+        M 49.9 35
+        C 70 35 65 65 85 65
+      "
+    />
+    <circle cx="50" cy="50" r="5" fill="#ffffff" />
+  </g>
+</svg>

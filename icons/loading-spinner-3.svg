@@ -1,25 +1,19 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="15"
-  height="15"
-  viewBox="-50 -50 100 100"
-  id="loading"
->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">
   <style>
-    #loading > .spinner {
+    .spinner {
       animation: offset 2s ease-in-out forwards infinite,
         rotate 2s ease-in-out forwards infinite;
       stroke-dasharray: 282.743338823;
     }
     @keyframes offset {
       0% {
-        stroke-dashoffset: 0;
+        stroke-dashoffset: 565.486677646;
       }
       50% {
-        stroke-dashoffset: -282.743338823;
+        stroke-dashoffset: 282.743338823;
       }
       100% {
-        stroke-dashoffset: -565.486677646;
+        stroke-dashoffset: 0;
       }
     }
     @keyframes rotate {

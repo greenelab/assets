@@ -18,8 +18,8 @@
     stroke="currentColor"
     stroke-width="10"
     d="
-    M -45 0
-    A 45 45 0 1 0 0 -45
-  "
+      M -45 0
+      A 45 45 0 1 0 0 -45
+    "
   />
 </svg>

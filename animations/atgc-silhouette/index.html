@@ -1,0 +1,128 @@
+<html>
+  <body>
+    <style>
+      body {
+        background: #101010;
+      }
+
+      svg {
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+
+      text {
+        fill: #03a9f4;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        animation: twinkle linear 5s infinite forwards;
+        opacity: 0;
+      }
+
+      @keyframes twinkle {
+        0% {
+          fill: #03a9f4;
+          opacity: 0;
+        }
+        40% {
+          fill: #b3e5fc;
+          opacity: 1;
+        }
+        50% {
+          fill: #ffffff;
+        }
+        60% {
+          fill: #b3e5fc;
+          opacity: 1;
+        }
+        100% {
+          fill: #03a9f4;
+          opacity: 0;
+        }
+      }
+    </style>
+    <img id="source_image" src="brain.png" style="display: none" />
+    <svg viewBox="0 0 100 100" id="visualization" aria-hidden="true"></svg>
+    <script>
+      // settings
+      const srcPx = 8; // pixels of source image per cell
+      const chars = ["A", "T", "G", "C"]; // letters to show at random
+      const cellSize = 10; // size of cells in svg units
+      const randDelay = 3; // animation delay/offset randomness, in seconds
+
+      // util func to split array into chunks
+      const chunk = (array, size) =>
+        Array(Math.ceil(array.length / size))
+          .fill()
+          .map((_, index) => index * size)
+          .map((begin) => array.slice(begin, begin + size));
+
+      // make grid visualization
+      const makeVis = async () => {
+        // key elements
+        const img = document.querySelector("#source_image");
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const svg = document.querySelector("#visualization");
+
+        // match canvas size to source image size
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // draw image to canvas
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+
+        // get pixel data
+        let pixels = ctx.getImageData(0, 0, img.width, img.height).data;
+
+        // split pixel data into rgba and reduce to single on/off value
+        pixels = chunk(pixels, 4).map(([r, g, b, a]) =>
+          a / 255 > 0.75 ? 1 : 0
+        );
+
+        // chunk pixel data into rows and columns
+        pixels = chunk(pixels, img.width);
+
+        // keep only every N rows and cols of pixel data
+        const grid = pixels
+          .filter((row, index) => index % srcPx === 0)
+          .map((row) => row.filter((col, index) => index % srcPx === 0));
+
+        // create grid
+        for (const [y, row] of Object.entries(grid)) {
+          for (const [x, col] of Object.entries(row)) {
+            // skip grid cell if off
+            if (!col) continue;
+
+            // create text cell
+            const ns = "http://www.w3.org/2000/svg";
+            const text = document.createElementNS(ns, "text");
+            text.setAttribute("x", x * cellSize);
+            text.setAttribute("y", y * cellSize);
+            svg.append(text);
+
+            // set random letter
+            refreshLetter(text);
+
+            // delay letters at random
+            text.style.animationDelay = Math.random() * randDelay + "s";
+
+            // set random letter after every animation
+            text.onanimationiteration = () => refreshLetter(text);
+          }
+        }
+
+        // fit svg viewbox to contents
+        const { x, y, width, height } = svg.getBBox();
+        // svg.setAttribute("width", width);
+        // svg.setAttribute("height", height);
+        svg.setAttribute("viewBox", `${x} ${y} ${width} ${height}`);
+      };
+
+      const refreshLetter = (text) =>
+        (text.innerHTML = chars[Math.floor(Math.random() * chars.length)]);
+
+      // make grid once page (and source image) have loaded
+      window.addEventListener("load", makeVis);
+    </script>
+  </body>
+</html>
